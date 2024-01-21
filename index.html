@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f2f2f2;
+            text-align: center;
+            padding: 20px;
+        }
+
+        #quiz-container {
+            max-width: 600px;
+            margin: auto;
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #0066cc;
+        }
+
+        #question-container {
+            margin-bottom: 20px;
+        }
+
+        #options-container {
+            display: flex;
+            flex-direction: column;
+        }
+
+        button {
+            padding: 10px;
+            background-color: #0066cc;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056a6;
+        }
+    </style>
+    <title>Danubius Hotel Quiz</title>
+</head>
+<body>
+    <div id="quiz-container">
+        <h1>Danubius Hotel Regents Park Quiz</h1>
+        <div id="question-container"></div>
+        <div id="options-container"></div>
+        <button id="next-button" onclick="nextQuestion()">Next</button>
+    </div>
+    <script>
+        const questions = [
+       const questions = [
+    {
+        question: "1. What is the location of Danubius Hotel Regents Park?",
+        options: ["a) Central London", "b) East London", "c) South London"],
+        correctAnswer: "a"
+    },
+    {
+        question: "2. How many rooms does the hotel have?",
+        options: ["a) 100", "b) 200", "c) 300"],
+        correctAnswer: "b"
+    },
+    {
+        question: "3. Which famous park is adjacent to the hotel?",
+        options: ["a) Hyde Park", "b) Regents Park", "c) St. James's Park"],
+        correctAnswer: "b"
+    },
+    {
+        question: "4. In which year was Danubius Hotel Regents Park established?",
+        options: ["a) 1970", "b) 1985", "c) 1998"],
+        correctAnswer: "a"
+    },
+    {
+        question: "5. What type of events can be hosted at the hotel?",
+        options: ["a) Weddings", "b) Business meetings", "c) Concerts"],
+        correctAnswer: "a"
+    },
+    {
+        question: "6. Which river is located near Danubius Hotel Regents Park?",
+        options: ["a) Thames", "b) Seine", "c) Danube"],
+        correctAnswer: "a"
+    },
+    {
+        question: "7. What is the hotel's signature restaurant called?",
+        options: ["a) Parkside Brasserie", "b) Riverside Lounge", "c) City View Bistro"],
+        correctAnswer: "a"
+    },
+    {
+        question: "8. How far is the hotel from Oxford Street?",
+        options: ["a) 1 mile", "b) 2 miles", "c) 3 miles"],
+        correctAnswer: "b"
+    },
+    {
+        question: "9. Which famous museum is close to Danubius Hotel Regents Park?",
+        options: ["a) The Louvre", "b) The British Museum", "c) The MET"],
+        correctAnswer: "b"
+    },
+    {
+        question: "10. What is the hotel's check-in time?",
+        options: ["a) 12:00 PM", "b) 2:00 PM", "c) 3:00 PM"],
+        correctAnswer: "b"
+    },
+    {
+        question: "11. Which room type offers a view of Regents Park?",
+        options: ["a) Standard Room", "b) Executive Suite", "c) Park View Room"],
+        correctAnswer: "c"
+    },
+    {
+        question: "12. How many meeting rooms does the hotel have for events?",
+        options: ["a) 5", "b) 8", "c) 10"],
+        correctAnswer: "c"
+    },
+    {
+        question: "13. What amenities are offered in the hotel's fitness center?",
+        options: ["a) Gym and Sauna", "b) Swimming Pool", "c) Tennis Courts"],
+        correctAnswer: "a"
+    },
+    {
+        question: "14. Which famous London landmark is not far from the hotel?",
+        options: ["a) Tower Bridge", "b) Buckingham Palace", "c) Big Ben"],
+        correctAnswer: "c"
+    },
+    {
+        question: "15. What sustainability initiatives does the hotel follow?",
+        options: ["a) Recycling Program", "b) Green Energy Usage", "c) All of the Above"],
+        correctAnswer: "c"
+    },
+    // Add more questions...
+];
+
+
+        const tips = [
+            "Tip: Check the hotel website for the answer.",
+            "Tip: The answer is related to the hotel's facilities.",
+            // Add more tips...
+        ];
+
+        let currentQuestionIndex = 0;
+        let score = 0;
+
+        function loadQuestion() {
+            const questionContainer = document.getElementById("question-container");
+            const optionsContainer = document.getElementById("options-container");
+            const question = questions[currentQuestionIndex];
+
+            questionContainer.innerHTML = `<p>${question.question}</p>`;
+
+            optionsContainer.innerHTML = question.options.map(option => `<label>${option} <input type="radio" name="answer" value="${option.charAt(0).toLowerCase()}"></label>`).join("");
+
+            document.getElementById("next-button").disabled = true;
+        }
+
+        function checkAnswer() {
+            const selectedOption = document.querySelector('input[name="answer"]:checked');
+
+            if (selectedOption) {
+                const userAnswer = selectedOption.value;
+
+                if (userAnswer === questions[currentQuestionIndex].correctAnswer) {
+                    score++;
+                }
+
+                document.getElementById("next-button").disabled = false;
+            }
+        }
+
+        function nextQuestion() {
+            currentQuestionIndex++;
+
+            if (currentQuestionIndex < questions.length) {
+                loadQuestion();
+            } else {
+                endGame();
+            }
+        }
+
+        function endGame() {
+            const quizContainer = document.getElementById("quiz-container");
+            quizContainer.innerHTML = `<h1>Game Over</h1><p>Your score: ${score}/${questions.length}</p>`;
+
+            if (score >= 10) {
+                quizContainer.innerHTML += `<p>Congratulations! You won the game!</p>`;
+            } else {
+                quizContainer.innerHTML += `<p>Sorry, you didn't reach the minimum score to win.</p>`;
+            }
+        }
+
+        loadQuestion();
+    </script>
+</body>
+</html>
