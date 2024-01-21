@@ -1,1 +1,136 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurants Near Danubius Regents Park Hotel</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        #header {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+        }
+        #picture {
+            width: 100%;
+            height: auto;
+        }
+        #restaurantsList {
+            list-style-type: none;
+            padding: 0;
+            margin: 20px;
+        }
+        .restaurant-item {
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin-bottom: 10px;
+            background-color: #fff;
+        }
+        #printButton {
+            margin: 20px;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="header">
+        <h1>Restaurants Near Danubius Regents Park Hotel</h1>
+    </div>
+
+    <img id="picture" src="rest.png" alt="Area Picture">
+
+    <ul id="restaurantsList"></ul>
+
+    <button id="printButton" onclick="printList()">Print List</button>
+
+    <script>
+        const restaurants = [
+            {
+                name: 'The Ivy St John’s Wood',
+                vicinity: '120 St. John’s Wood High Street, London NW8 7SG',
+                phone: '+44 20 3146 7744'
+            },
+            {
+                name: 'Richoux',
+                vicinity: '172A High Street, London NW8 7AA',
+                phone: '+44 20 7586 0434'
+            },
+            {
+                name: 'The Warrington Hotel',
+                vicinity: '93 Warrington Crescent, London W9 1EH',
+                phone: '+44 20 7266 3557'
+            },
+            {
+                name: 'Harry Morgan',
+                vicinity: '31 St John’s Wood High Street, London NW8 7NL',
+                phone: '+44 20 7722 1869'
+            },
+            {
+                name: 'GAIL’s Bakery',
+                vicinity: '5 Circus Road, London NW8 6NX',
+                phone: '+44 20 7722 0983'
+            },
+            {
+                name: 'Megan’s St John’s Wood',
+                vicinity: '120 St John’s Wood High Street, London NW8 7SG',
+                phone: '+44 20 3092 1791'
+            },
+            {
+                name: 'The Duke of York - St John’s Wood',
+                vicinity: '59, 61, St. Ann’s Terrace, London NW8 6PJ',
+                phone: '+44 20 7722 8999'
+            },
+            {
+                name: 'The Ordnance',
+                vicinity: '29 Ordnance Hill, London NW8 6PS',
+                phone: '+44 20 7483 3222'
+            },
+            {
+                name: 'Capricci',
+                vicinity: '95 Westbourne Grove, London W2 4UW',
+                phone: '+44 20 7298 9922'
+            },
+            {
+                name: 'The North London Tavern',
+                vicinity: '375 Kilburn High Road, London NW6 7QB',
+                phone: '+44 20 7372 0241'
+            }
+        ];
+
+        // Display restaurants in the list
+        function displayRestaurants() {
+            const restaurantsList = document.getElementById('restaurantsList');
+
+            restaurants.forEach(restaurant => {
+                // Add restaurant information to the list
+                const listItem = document.createElement('li');
+                listItem.className = 'restaurant-item';
+                listItem.innerHTML = `<strong>${restaurant.name}</strong><br>${restaurant.vicinity}<br>Phone: ${restaurant.phone}`;
+                restaurantsList.appendChild(listItem);
+            });
+        }
+
+        // Print the restaurant list
+        function printList() {
+            window.print();
+        }
+
+        // Call the display function when the page loads
+        window.onload = displayRestaurants;
+    </script>
+
+</body>
+</html>
