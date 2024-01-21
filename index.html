@@ -21,8 +21,11 @@
         }
 
         #picture {
-            width: 100%;
+            width: 80%; /* Decreased the size to 80% of the container */
             height: auto;
+            display: block;
+            margin: auto; /* Center the image */
+            max-width: 100%; /* Ensure it doesn't exceed its natural size */
         }
 
         #restaurantsList {
@@ -67,6 +70,7 @@
     <ul id="restaurantsList"></ul>
 
     <button id="printButton" onclick="printList()">Print List</button>
+
 
     <script>
         const restaurants = [
@@ -122,8 +126,7 @@
             }
         ];
 
-        // Display restaurants in the list
-        function displayRestaurants() {
+         function displayRestaurants() {
             const restaurantsList = document.getElementById('restaurantsList');
 
             restaurants.forEach((restaurant, index) => {
