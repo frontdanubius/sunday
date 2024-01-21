@@ -21,11 +21,11 @@
         }
 
         #picture {
-            width: 80%; /* Decreased the size to 80% of the container */
+            width: 80%;
             height: auto;
             display: block;
-            margin: auto; /* Center the image */
-            max-width: 100%; /* Ensure it doesn't exceed its natural size */
+            margin: auto;
+            max-width: 100%;
         }
 
         #restaurantsList {
@@ -55,6 +55,25 @@
             border: none;
             border-radius: 5px;
             cursor: pointer;
+        }
+
+        @media print {
+            body {
+                background-color: #fff; /* Set background color for print */
+            }
+
+            #header {
+                display: none; /* Hide header in print */
+            }
+
+            #picture {
+                width: 100%; /* Use full width for image in print */
+                margin-bottom: 20px;
+            }
+
+            .restaurant-item {
+                page-break-inside: avoid; /* Avoid breaking list items across pages */
+            }
         }
     </style>
 </head>
@@ -126,11 +145,10 @@
             }
         ];
 
-         function displayRestaurants() {
+          function displayRestaurants() {
             const restaurantsList = document.getElementById('restaurantsList');
 
             restaurants.forEach((restaurant, index) => {
-                // Add restaurant information to the list
                 const listItem = document.createElement('li');
                 listItem.className = 'restaurant-item';
                 listItem.innerHTML = `<span>${index + 1}</span><strong>${restaurant.name}</strong><br>${restaurant.vicinity}<br>Phone: ${restaurant.phone}`;
@@ -138,12 +156,10 @@
             });
         }
 
-        // Print the restaurant list
         function printList() {
             window.print();
         }
 
-        // Call the display function when the page loads
         window.onload = displayRestaurants;
     </script>
 
