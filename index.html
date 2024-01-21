@@ -4,24 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
-        body {
+     body {
             font-family: 'Arial', sans-serif;
             background-color: #f2f2f2;
             text-align: center;
             padding: 20px;
+            margin: 0;
         }
 
         #quiz-container {
-            max-width: 600px;
+            max-width: 800px;
             margin: auto;
             background-color: #fff;
             border-radius: 10px;
-            padding: 20px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
         }
 
         h1 {
             color: #0066cc;
+            margin-bottom: 20px;
         }
 
         #question-container {
@@ -31,15 +33,31 @@
         #options-container {
             display: flex;
             flex-direction: column;
+            gap: 10px;
+        }
+
+        label {
+            display: block;
+            background-color: #0066cc;
+            color: #fff;
+            padding: 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        label:hover {
+            background-color: #0056a6;
         }
 
         button {
-            padding: 10px;
+            padding: 15px;
             background-color: #0066cc;
             color: #fff;
             border: none;
             border-radius: 5px;
             cursor: pointer;
+            transition: background-color 0.3s;
         }
 
         button:hover {
@@ -53,6 +71,7 @@
         <h1>Danubius Hotel Regents Park Quiz</h1>
         <div id="question-container"></div>
         <div id="options-container"></div>
+        <br><br>
         <button id="next-button" onclick="checkAnswer()">Next</button>
     </div>
     <script>
@@ -68,9 +87,9 @@
         correctAnswer: "b"
     },
     {
-        question: "3. Which famous park is adjacent to the hotel?",
-        options: ["a) Hyde Park", "b) Regents Park", "c) St. James's Park"],
-        correctAnswer: "b"
+        question: "3. Which concierge speaks arabic?",
+        options: ["a) mohammed", "b) saladino", "c)ahmed"],
+        correctAnswer: c"
     },
     {
         question: "4. In which year was Danubius Hotel Regents Park established?",
@@ -88,18 +107,18 @@
         correctAnswer: "a"
     },
     {
-        question: "7. who's the mascot from Danubius hotel regents park ?",
+        question: "7. who's the mascot 🐕 from Danubius hotel regents park ?",
         options: ["a) snoopy", "b) guilly", "c) pluto"],
         correctAnswer: "a"
     },
     {
-        question: "8. How far is the hotel from Oxford Street?",
-        options: ["a) 1 mile", "b) 2 miles", "c) 3 miles"],
+        question: "8. Who is the Front Desk Manager ?",
+        options: ["a) Jude Peris", "b) Jay", "c) Hey Jude"],
         correctAnswer: "b"
     },
     {
-        question: "9. Which famous museum is close to Danubius Hotel Regents Park?",
-        options: ["a) The Louvre", "b) The British Museum", "c) The MET"],
+        question: "9. Which airline company has a nice contract with danubius?",
+        options: ["a) nasa", "b) air canada", "c) air morroco"],
         correctAnswer: "b"
     },
     {
