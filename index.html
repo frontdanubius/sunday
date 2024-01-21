@@ -1,6 +1,6 @@
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,27 +12,38 @@
             padding: 0;
             background-color: #f4f4f4;
         }
+
         #header {
             background-color: #333;
             color: #fff;
             text-align: center;
             padding: 10px;
         }
+
         #picture {
             width: 100%;
             height: auto;
         }
+
         #restaurantsList {
             list-style-type: none;
             padding: 0;
             margin: 20px;
         }
+
         .restaurant-item {
             border: 1px solid #ddd;
             padding: 10px;
             margin-bottom: 10px;
             background-color: #fff;
         }
+
+        .restaurant-item span {
+            color: red;
+            font-weight: bold;
+            margin-right: 5px;
+        }
+
         #printButton {
             margin: 20px;
             padding: 10px;
@@ -44,6 +55,7 @@
         }
     </style>
 </head>
+
 <body>
 
     <div id="header">
@@ -114,11 +126,11 @@
         function displayRestaurants() {
             const restaurantsList = document.getElementById('restaurantsList');
 
-            restaurants.forEach(restaurant => {
+            restaurants.forEach((restaurant, index) => {
                 // Add restaurant information to the list
                 const listItem = document.createElement('li');
                 listItem.className = 'restaurant-item';
-                listItem.innerHTML = `<strong>${restaurant.name}</strong><br>${restaurant.vicinity}<br>Phone: ${restaurant.phone}`;
+                listItem.innerHTML = `<span>${index + 1}</span><strong>${restaurant.name}</strong><br>${restaurant.vicinity}<br>Phone: ${restaurant.phone}`;
                 restaurantsList.appendChild(listItem);
             });
         }
@@ -133,4 +145,5 @@
     </script>
 
 </body>
+
 </html>
